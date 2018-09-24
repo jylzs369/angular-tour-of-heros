@@ -1,4 +1,4 @@
-import { InMemoryDbService } from 'angular-in-memory-web-api';
+
 import Loki from 'lokijs'
 
 const db = new Loki('loki.json')
@@ -21,13 +21,4 @@ if (!collectionHeroes.count()) {
   heroesList.forEach(item => {
     collectionHeroes.insert(item)
   })
-}
-console.log(db)
-
-export class InMemoryDataService implements InMemoryDbService {
-  createDb() {
-    const heroes = db.getCollection('heroes').find()
-    console.log(heroes)
-    return {heroes};
-  }
 }
