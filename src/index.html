@@ -10,5 +10,14 @@
 </head>
 <body>
   <app-root></app-root>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./assets/js/cache.js').then(registration => {
+        console.log('注册成功', registration.scope)
+      }).catch(err => {
+        console.log('注册失败', err)
+      })
+    }
+  </script>
 </body>
 </html>

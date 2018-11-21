@@ -5,17 +5,27 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(VERSION).then(function(cache) {
       return cache.addAll([
-        './index.html',
-        './vendor.js',
-        './runtime.js',
-        './polyfills.js',
-        './style.js',
-        './main.js',
-        './favicon.ico'
-      ]);
+        '../../index.html',
+        '../../vendor.js',
+        '../../runtime.js',
+        '../../polyfills.js',
+        '../../styles.js',
+        '../../main.js',
+        '../../favicon.ico',
+        '../imgs/avatars/1.jpg',
+        '../imgs/avatars/2.jpg',
+        '../imgs/avatars/3.jpg',
+        '../imgs/avatars/4.jpg',
+        '../imgs/avatars/5.jpg',
+        '../imgs/avatars/6.jpg',
+        '../imgs/avatars/7.jpg',
+        '../imgs/avatars/8.jpg',
+        '../imgs/avatars/9.jpg',
+        '../imgs/avatars/10.jpg'
+      ])
     })
-  );
-});
+  )
+})
 
 // 缓存更新
 self.addEventListener('activate', function(event) {
@@ -28,10 +38,10 @@ self.addEventListener('activate', function(event) {
             return caches.delete(cacheName);
           }
         })
-      );
+      )
     })
-  );
-});
+  )
+})
 
 // 捕获请求并返回缓存数据
 self.addEventListener('fetch', function(event) {
@@ -42,7 +52,7 @@ self.addEventListener('fetch', function(event) {
       cache.put(event.request, response);
     });
     return response.clone();
-  }).catch(function() {
-    // return caches.match('./static/mm1.jpg');
-  }));
-});
+  }).catch(function(err) {
+    return err
+  }))
+})
