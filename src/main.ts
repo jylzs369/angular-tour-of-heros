@@ -8,5 +8,9 @@ if (environment.production) {
   enableProdMode();
 }
 
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./cache.js');
+}
+
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.log(err));
